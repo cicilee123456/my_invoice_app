@@ -1,0 +1,33 @@
+<?php
+/**
+ * 數據庫連接配置文件 (範例)
+ *
+ * 請將此文件複製為 db_config.php 並填入您的數據庫連接信息。
+ * db_config.php 已被添加到 .gitignore，不會被上傳到 GitHub。
+ */
+
+// ** MySQL 設置 ** //
+define('DB_HOST', 'localhost');      // 數據庫主機 (例如 'localhost' 或 IP 地址)
+define('DB_USER', 'root');           // 數據庫用戶名
+define('DB_PASSWORD', '');           // 數據庫密碼
+define('DB_NAME', 'invoice_db');     // 數據庫名稱
+define('DB_CHARSET', 'utf8mb4');     // 字符集
+
+/**
+ * 創建 PDO 連接實例
+ *
+ * @var PDO $pdo
+ */
+try {
+    $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+    $pdo = new PDO($dsn, DB_USER, DB_PASSWORD, $options);
+} catch (\PDOException $e) {
+    http_response_code(500);
+    header('Content-Type: application/json; charset=utf-8');
+    die(json_encode(['success' => false, 'message' => '數據庫連接失敗，請檢查伺服器配置。']));
+}

@@ -1,0 +1,36 @@
+# Flutter/Dart specific
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+build/
+*.iml
+*.lastUpdate
+
+# IDE files
+.idea/
+.vscode/
+
+# iOS specific
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/.symlinks/
+ios/Flutter/App.framework
+ios/Flutter/engine
+ios/Flutter/ephemeral/
+
+# Android specific
+android/.gradle/
+android/app/build/
+android/build/
+
+# PHP / Server specific
+# IMPORTANT: Ignore database configuration file with credentials.
+php/db_config.php
+
+# Composer dependencies
+vendor/
+
+# OS-specific
+.DS_Store
+Thumbs.db
